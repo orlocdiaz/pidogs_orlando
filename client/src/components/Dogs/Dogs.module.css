@@ -1,27 +1,95 @@
 .container {
   position: relative;
+  margin: 1em;
   display: grid;
   grid-template-areas:
     "dogs dogs filters"
     "pages pages filters";
-  margin: 1em;
-  padding: 1em;
+  grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-columns: 2fr 1fr;
   border-radius: 10px;
   border: solid 1em var(--main-color);
 }
 
 .dogsContainer {
-  display: flex;
-  flex-flow: wrap row;
+  min-width: fit-content;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 
   grid-area: dogs;
 }
 
 .filtersContainer {
+  padding: 1em;
+  background: var(--main-color);
+  max-width: fit-content;
+  max-height: fit-content;
+
   grid-area: filters;
 }
 
+.temperamentFilters {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.filtersMenu {
+  margin-top: 1em;
+  padding: 0.5em;
+  background: white;
+  border-radius: 5px 5px 0 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.filtersMenu svg {
+  margin: 0 0.5em;
+}
+
+.filtersOptions {
+  position: absolute;
+  padding: 0.5em;
+  max-height: 50em;
+  width: 100%;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 100%);
+  background-color: #fff;
+  overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
+  border-radius: 0 0 5px 5px;
+}
+
+/* height */
+.filtersOptions::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+/* Track */
+.filtersOptions::-webkit-scrollbar-track {
+  width: 1em;
+  background: transparent;
+}
+
+/* Handle */
+.filtersOptions::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.filtersOptions::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
 .pagesContainer {
+  height: fit-content;
+  align-self: flex-end;
+
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -33,9 +101,4 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-}
-
-.temperamentFilters {
-  display: flex;
-  flex-direction: column;
 }

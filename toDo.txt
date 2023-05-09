@@ -2,3 +2,4 @@
 2-When ordered by weight, make sure the ones with just 1 weight are correctly ordered
 3-When adding repeated dog alert says dog created and after that the something wrong shows
 4-height and weigh validations not working correctly
+5.Weird bug when ordering weight after ordering a to z

@@ -1,0 +1,42 @@
+.container {
+  min-height: 100vh;
+  background: url("https://img.freepik.com/free-psd/group-portrait-adorable-puppies_53876-73977.jpg?w=1800&t=st=1683189695~exp=1683190295~hmac=5622593dda5be5b464a283e8a343017eb62bfc277d491d526a3a2e4e2f08289f");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landingCard {
+  padding: 4em;
+  height: 50%;
+  width: 50%;
+  background-color: var(--blured-bg);
+  backdrop-filter: blur(1em);
+  border-radius: 10px;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeLink {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+.homeButton {
+  padding: 1em;
+  border-radius: 10px;
+  border: 2px solid var(--main-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

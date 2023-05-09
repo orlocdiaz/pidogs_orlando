@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "dogs dogs filters"
+    "pages pages filters";
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  border: solid 1em var(--main-color);
+}
+
+.dogsContainer {
+  display: flex;
+  flex-flow: wrap row;
+
+  grid-area: dogs;
+}
+
+.filtersContainer {
+  grid-area: filters;
+}
+
+.pagesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  grid-area: pages;
+}
+
+.subContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.temperamentFilters {
+  display: flex;
+  flex-direction: column;
+}

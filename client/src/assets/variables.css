@@ -1,0 +1,11 @@
+/*! Variables !*/
+
+:root {
+  /* *Colors* */
+  --main-color: brown;
+  --secondary-color: black;
+  --error-color: red;
+
+  /* *BG* */
+  --blured-bg: #ffffff96;
+}

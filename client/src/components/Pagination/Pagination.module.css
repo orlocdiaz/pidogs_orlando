@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageNumBtn {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .disableBtn {
+  display: none;
+} */

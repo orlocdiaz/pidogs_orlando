@@ -8,6 +8,7 @@ const FILTER_DOGS = "FILTER_DOGS";
 const FILTER_SOURCE = "FILTER_SOURCE";
 const REMOVE_FILTERS = "REMOVE_FILTERS";
 const ORDER = "ORDER";
+const DETAIL_DOG = "DETAIL_DOG";
 
 function allDogs(dogs) {
   return {
@@ -73,6 +74,12 @@ function order(order) {
     payload: order,
   };
 }
+function detailDog(dog) {
+  return {
+    type: DETAIL_DOG,
+    payload: dog,
+  };
+}
 
 export {
   allDogs,
@@ -91,4 +98,6 @@ export {
   REMOVE_FILTERS,
   order,
   ORDER,
+  detailDog,
+  DETAIL_DOG,
 };

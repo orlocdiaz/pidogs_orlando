@@ -34,6 +34,7 @@ const FilterTemperaments = ({ temperament }) => {
             value={temperament}
             id={`${temperament}-cb`}
             onChange={onCheck}
+            className={styles.filterTempsCB}
           />
           <label>{temperament}</label>
         </div>

@@ -12,6 +12,7 @@ import Nav from "./components/Nav/Nav";
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const background = location.state && location.state.background;
 
   useEffect(() => {
     try {
@@ -29,12 +30,16 @@ function App() {
   return (
     <div className="App">
       {location.pathname !== "/" && <Nav />}
-      <Routes>
+      <Routes location={background || location}>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/add" element={<AddDog />} />
-        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
+      {location && (
+        <Routes>
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
+      )}
     </div>
   );
 }

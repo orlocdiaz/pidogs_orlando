@@ -289,6 +289,7 @@ summary {
   /* font-style: normal; */
 }
 
-.body {
-  background-image: url("https://img.freepik.com/free-vector/cute-colorful-kitten-pow-pattern-design_1017-14710.jpg?w=826&t=st=1683601657~exp=1683602257~hmac=d18da63c57f832848e8c64cb584645e0ed73faa4b2b3fb93701b1cd9fc60d81b");
+body {
+  background-color: var(--neutral-color);
+  scrollbar-gutter: stable both-edges;
 }

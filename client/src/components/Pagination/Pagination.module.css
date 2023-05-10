@@ -10,6 +10,24 @@
   flex-direction: row;
 }
 
-/* .disableBtn {
-  display: none;
-} */
+.nextBtn,
+.previousBtn {
+  cursor: pointer;
+  color: var(--main-color2);
+  transition: all 0.3s ease;
+}
+
+.nextBtn:hover,
+.previousBtn:hover {
+  color: var(--main-color);
+}
+
+.disableBtn {
+  cursor: auto;
+  color: var(--secondary-color2);
+}
+
+.disableBtn:hover {
+  cursor: auto;
+  color: var(--secondary-color2);
+}

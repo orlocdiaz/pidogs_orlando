@@ -10,19 +10,29 @@ const Order = () => {
 
   const handleOrderBreed = () => {
     // dispatch(order(event.target.value));
-    auxBreed ? dispatch(order("BD")) : dispatch(order("BA"));
-    setAuxBreed(!auxBreed);
+    if (auxBreed) {
+      dispatch(order("BD"));
+      setAuxBreed(false);
+    } else {
+      dispatch(order("BA"));
+      setAuxBreed(true);
+    }
   };
 
   const handleOrderWeight = () => {
     // dispatch(order(event.target.value));
-    auxWeight ? dispatch(order("WD")) : dispatch(order("WA"));
-    setAuxWeight(!auxWeight);
+    if (auxWeight) {
+      dispatch(order("WD"));
+      setAuxWeight(false);
+    } else {
+      dispatch(order("WA"));
+      setAuxWeight(true);
+    }
   };
 
   return (
     <div className={styles.orderContainer}>
-      {!auxBreed ? (
+      {auxBreed ? (
         <div className={styles.orderBtn} onClick={handleOrderBreed}>
           A Z
           <svg

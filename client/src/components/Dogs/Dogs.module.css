@@ -5,17 +5,18 @@
   grid-template-areas:
     "dogs dogs filters"
     "pages pages filters";
-  grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
   grid-template-columns: 2fr 1fr;
   border-radius: 10px;
-  border: solid 1em var(--main-color);
+  border: solid 5px var(--main-color);
+  border-right: none;
 }
 
 .dogsContainer {
   min-width: fit-content;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 
   grid-area: dogs;
 }
@@ -27,6 +28,25 @@
   max-height: fit-content;
 
   grid-area: filters;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.showAllBtn {
+  cursor: pointer;
+  margin: 1em;
+  height: 3em;
+  width: 50%;
+  background: var(--main-color2);
+  border: 2px solid var(--neutral-color);
+  border-radius: 5px;
+  color: var(--neutral-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .temperamentFilters {
@@ -38,8 +58,11 @@
 .filtersMenu {
   margin-top: 1em;
   padding: 0.5em;
-  background: white;
+  width: 15em;
+  background: var(--main-color2);
+  border-bottom: 2px solid var(--main-color);
   border-radius: 5px 5px 0 0;
+  color: var(--neutral-color);
 
   display: flex;
   align-items: flex-end;
@@ -52,21 +75,22 @@
 
 .filtersOptions {
   position: absolute;
-  padding: 0.5em;
+  /* padding: 0.5em; */
   max-height: 50em;
   width: 100%;
   bottom: 0;
   right: 50%;
   transform: translate(50%, 100%);
-  background-color: #fff;
+  background-color: var(--main-color2);
   overflow-y: scroll;
   scrollbar-gutter: stable both-edges;
   border-radius: 0 0 5px 5px;
+  color: var(--neutral-color);
 }
 
 /* height */
 .filtersOptions::-webkit-scrollbar {
-  width: 0.5em;
+  width: 0.3em;
 }
 
 /* Track */
@@ -77,13 +101,13 @@
 
 /* Handle */
 .filtersOptions::-webkit-scrollbar-thumb {
-  background: black;
+  background: var(--neutral-color);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .filtersOptions::-webkit-scrollbar-thumb:hover {
-  background: black;
+  background: var(--neutral-color);
 }
 
 .pagesContainer {

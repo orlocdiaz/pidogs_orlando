@@ -7,6 +7,7 @@ import {
   FILTER_SOURCE,
   REMOVE_FILTERS,
   ORDER,
+  DETAIL_DOG,
 } from "./actions";
 
 const initialState = {
@@ -16,14 +17,23 @@ const initialState = {
   parametersToFilter: [],
   filteredDogs: [],
   addDog: [],
+  detailDog: {},
 };
 
 const rootReducer = (state = initialState, action) => {
+  const sortBreed = (breed) => (a, b) => {
+    if (a[breed] < b[breed]) {
+      return -1;
+    } else if (a[breed] > b[breed]) {
+      return 1;
+    }
+    return 0;
+  };
   switch (action.type) {
     case ALL_DOGS:
       return {
         ...state,
-        allDogs: action.payload,
+        allDogs: action.payload.sort(sortBreed("breed")),
       };
 
     case ALL_TEMPERAMENTS:
@@ -181,18 +191,22 @@ const rootReducer = (state = initialState, action) => {
         return 0;
       };
       const sortWeightA = (weight) => (a, b) => {
-        const aSplit = a[weight]?.includes("NaN")
-          ? 100
-          : +a[weight]?.split(" ")[0];
-        const bSplit = b[weight]?.includes("NaN")
-          ? 101
-          : +b[weight]?.split(" ")[0];
-        const aSplit2 = a[weight]?.includes("NaN")
-          ? 100
-          : +a[weight]?.split(" ")[2];
-        const bSplit2 = b[weight]?.includes("NaN")
-          ? 101
-          : +b[weight]?.split(" ")[2];
+        const aSplit =
+          a[weight]?.includes("NaN") || !a[weight]
+            ? 100
+            : +a[weight]?.split(" ")[0];
+        const bSplit =
+          b[weight]?.includes("NaN") || !b[weight]
+            ? 100
+            : +b[weight]?.split(" ")[0];
+        const aSplit2 =
+          a[weight]?.includes("NaN") || !a[weight]
+            ? 100
+            : +a[weight]?.split(" ")[2];
+        const bSplit2 =
+          b[weight]?.includes("NaN") || !b[weight]
+            ? 100
+            : +b[weight]?.split(" ")[2];
         if (aSplit < bSplit) {
           return -1;
         } else if (aSplit > bSplit) {
@@ -205,18 +219,22 @@ const rootReducer = (state = initialState, action) => {
         return 0;
       };
       const sortWeightD = (weight) => (a, b) => {
-        const aSplit = a[weight]?.includes("NaN")
-          ? 100
-          : +a[weight]?.split(" ")[0];
-        const bSplit = b[weight]?.includes("NaN")
-          ? 101
-          : +b[weight]?.split(" ")[0];
-        const aSplit2 = a[weight]?.includes("NaN")
-          ? 100
-          : +a[weight]?.split(" ")[2];
-        const bSplit2 = b[weight]?.includes("NaN")
-          ? 101
-          : +b[weight]?.split(" ")[2];
+        const aSplit =
+          a[weight]?.includes("NaN") || !a[weight]
+            ? 0
+            : +a[weight]?.split(" ")[0];
+        const bSplit =
+          b[weight]?.includes("NaN") || !b[weight]
+            ? 0
+            : +b[weight]?.split(" ")[0];
+        const aSplit2 =
+          a[weight]?.includes("NaN") || !a[weight]
+            ? 0
+            : +a[weight]?.split(" ")[2];
+        const bSplit2 =
+          b[weight]?.includes("NaN") || !b[weight]
+            ? 0
+            : +b[weight]?.split(" ")[2];
         if (aSplit > bSplit) {
           return -1;
         } else if (aSplit < bSplit) {
@@ -254,6 +272,11 @@ const rootReducer = (state = initialState, action) => {
         };
       }
       break;
+    case DETAIL_DOG:
+      return {
+        ...state,
+        detailDog: action.payload,
+      };
 
     default:
       return { ...state };

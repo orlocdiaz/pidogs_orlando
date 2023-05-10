@@ -12,10 +12,10 @@ const Dogs = () => {
   const dispatch = useDispatch();
   const [showTemps, setShowTemps] = useState();
   const dogs = useSelector((state) => state.allDogs);
+
   const temperaments = useSelector((state) => state.allTemperaments);
   const foundBreeds = useSelector((state) => state.foundBreeds);
   const { filteredDogs } = useSelector((state) => state);
-  // console.log(filteredDogs);
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
   const totalDogs = foundBreeds.length
@@ -78,7 +78,9 @@ const Dogs = () => {
 
           <div className={styles.filtersContainer}>
             {foundBreeds.length || filteredDogs.length ? (
-              <button onClick={showAll}>Show all</button>
+              <div onClick={showAll} className={styles.showAllBtn}>
+                Show all
+              </div>
             ) : (
               <div></div>
             )}
@@ -89,7 +91,7 @@ const Dogs = () => {
                   className={styles.filtersMenu}
                   onClick={() => setShowTemps(!showTemps)}
                 >
-                  Filter by temperaments
+                  Filters
                   {showTemps ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -114,9 +116,10 @@ const Dogs = () => {
                     </svg>
                   )}
                 </div>
-                {showTemps && (
+                {showTemps || filteredDogs.length ? (
                   <div className={styles.filtersOptions}>
                     <FilterSource />
+                    By temperaments
                     {temperaments.map((temp) => (
                       <FilterTemperaments
                         key={temp.id}
@@ -124,6 +127,8 @@ const Dogs = () => {
                       />
                     ))}
                   </div>
+                ) : (
+                  <div></div>
                 )}
               </div>
             )}

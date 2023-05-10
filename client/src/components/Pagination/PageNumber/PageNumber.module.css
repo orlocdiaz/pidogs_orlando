@@ -3,14 +3,21 @@
   padding: 0.5em;
   height: 2em;
   width: 2em;
-  border: 2px solid var(--main-color);
   border-radius: 5px;
+  background-color: var(--main-color2);
+  color: var(--neutral-color);
 
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.1s ease;
+}
+
+.container:hover {
+  cursor: pointer;
+  border: 2px solid var(--main-color);
 }
 
 .activePage {
-  background-color: lightslategray;
+  background-color: var(--main-color);
 }

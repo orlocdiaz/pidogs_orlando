@@ -16,6 +16,7 @@ const FilterSource = () => {
 
   return (
     <div className={styles.container}>
+      By source
       <div className={styles.checkb}>
         <input
           type="checkbox"
@@ -23,8 +24,9 @@ const FilterSource = () => {
           value="createdAt"
           id={`createdAt-cb`}
           onChange={onCheck}
+          className={styles.filterSourceCB}
         />
-        <label>Created By Me</label>
+        <label>Added By Me</label>
       </div>
       <div className={styles.checkb}>
         <input
@@ -33,6 +35,7 @@ const FilterSource = () => {
           value="fromAPI"
           id={`fromAPI-cb`}
           onChange={onCheck}
+          className={styles.filterSourceCB}
         />
         <label>Dogs from Website</label>
       </div>

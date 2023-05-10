@@ -21,7 +21,6 @@ const postDog = async ({
       (temp) => temp.dataValues.temperament
     );
     const temperamentJoin = temperamentMap.join(", ");
-    console.log(temperamentJoin);
 
     let createDog = await Dog.create({
       image,

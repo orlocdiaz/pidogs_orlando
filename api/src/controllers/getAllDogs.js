@@ -8,7 +8,7 @@ const getDogsFromApi = async () => {
       id: dog.id,
       image: dog.image.url,
       breed: dog.name,
-      heigth: dog.height.metric,
+      height: dog.height.metric,
       weight: dog.weight.metric,
       life_span: dog.life_span,
       temperament: dog.temperament,

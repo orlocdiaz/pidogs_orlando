@@ -12,7 +12,6 @@ import {
 } from "./validations";
 
 const AddDog = () => {
-  const navigate = useNavigate();
   const dogs = useSelector((state) => state.allDogs);
   const temperaments = useSelector((state) => state.allTemperaments);
   const [dogData, setDogData] = useState({
@@ -99,13 +98,25 @@ const AddDog = () => {
   };
 
   const handleSubmit = async (event) => {
-    const findBreed = dogs.some((dog) => dog.breed === dogData.breed);
+    const findBreed = await dogs.some((dog) => dog.breed === dogData.breed);
     findBreed &&
       setErrors({
         ...errors,
-        breed: "This dog was already on your list",
+        breed: "This dog is already on the list",
       });
     await validateHWT({ ...dogData }, errors, setErrors);
+    if (
+      !dogData.breed ||
+      !dogData.image ||
+      !dogData.life_span ||
+      !dogData.temperament
+    ) {
+      validateBreed(dogData, errors, setErrors);
+      validateImage(dogData, errors, setErrors);
+      validateLS(dogData, errors, setErrors);
+      validateHWT(dogData, errors, setErrors);
+      event.preventDefault();
+    }
     if (Object.keys(errors).length) {
       event.preventDefault();
       alert("Fill the fields correctly.");
@@ -113,9 +124,8 @@ const AddDog = () => {
     } else {
       event.preventDefault();
       await postDog(dogData);
-      navigate("/home");
+      // navigate("/home");
     }
-    console.log(errors);
   };
 
   return (
@@ -124,30 +134,32 @@ const AddDog = () => {
       <div className={styles.container}>
         <form className={styles.addForm}>
           <div className={styles.breedInputContainer}>
-            <label htmlFor="breedName">*Breed</label>
+            <label htmlFor="breedName">Breed*</label>
             <input
               type="text"
               name="breed"
               id="breed"
-              placeholder="Ex: Chihuahua"
+              placeholder="Chihuahua"
               onChange={handleChange}
               className={`${styles.inputTxt} ${
                 errors.breed && styles.breedInput
               }`}
             />
+            {errors.breed && <p className={styles.errorsTxt}>{errors.breed}</p>}
           </div>
           <div className={styles.imageInputContainer}>
-            <label htmlFor="image">Image URL</label>
+            <label htmlFor="image">Image URL*</label>
             <input
-              type="url"
+              type="text"
               name="image"
               id="image"
-              placeholder="Ex: image.com/jpg"
+              placeholder={errors.image ? `${errors.image}` : "image.com/jpg"}
               onChange={handleChange}
               className={`${styles.inputTxt} ${
                 errors.image && styles.imageInput
               }`}
             />
+            {errors.image && <p className={styles.errorsTxt}>{errors.image}</p>}
           </div>
           <div className={styles.heightInputsContainer}>
             <label htmlFor="height">Height</label>
@@ -174,6 +186,9 @@ const AddDog = () => {
                 }`}
               />
             </div>
+            {errors.height && (
+              <p className={styles.errorsTxt}>{errors.height}</p>
+            )}
           </div>
           <div className={styles.weightInputsContainer}>
             <label htmlFor="weight">Weight</label>
@@ -200,21 +215,30 @@ const AddDog = () => {
                 }`}
               />
             </div>
+            {errors.weight && (
+              <p className={styles.errorsTxt}>{errors.weight}</p>
+            )}
           </div>
           <div className={styles.lsInputContainer}>
-            <label htmlFor="lifeSpan">*Life Span</label>
+            <label htmlFor="lifeSpan">Life Span*</label>
             <input
               type="text"
               name="life_span"
               id="lifeSpan"
-              placeholder="Ex: 9 - 12"
+              placeholder="9 - 12"
               onChange={handleChange}
               className={`${styles.inputTxt} ${
                 errors.life_span && styles.lifeSpanInput
               }`}
             />
+            {errors.life_span && (
+              <p className={styles.errorsTxt}>{errors.life_span}</p>
+            )}
           </div>
           <div className={styles.tempsMenu}>
+            {errors.temperament && (
+              <p className={styles.errorsTxt}>{errors.temperament}</p>
+            )}
             <div
               className={styles.menuTitle}
               onClick={() => setShowTemps(!showTemps)}
@@ -260,6 +284,7 @@ const AddDog = () => {
                     value={temperament}
                     id={`${temperament}-add`}
                     onChange={handleChange}
+                    className={styles.checkboxTemps}
                   />
                   <label htmlFor="temperament">{temperament}</label>
                 </div>

@@ -13,7 +13,10 @@ const validateBreed = (dogData, errors) => {
 };
 
 const validateImage = (dogData, errors) => {
-  if (dogData.image) {
+  console.log(typeof dogData.image);
+  if (!dogData.image || dogData.image === "") {
+    errors.image = "You must enter a url for an image";
+  } else {
     if (!/([a-z\-_0-9/:.]*\.(jpg|jpeg|png|gif))/i.test(dogData.image)) {
       errors.image = "You must enter a valid image link(jpg, jpeg, png, gif)";
     } else {
@@ -28,7 +31,7 @@ const validateLS = (dogData, errors) => {
   } else {
     const splitedLifeSpan = dogData.life_span.split(" - ");
     if (!/^[1-9]\d{0,2}(?: - [1-9]\d{0,2}){0,1}$/g.test(dogData.life_span)) {
-      errors.life_span = `Life span format must look like this "## - ##" or "##"`;
+      errors.life_span = `Life span format must look like this "00 - 00" or "00"`;
     } else if (+splitedLifeSpan[0] > 20 || +splitedLifeSpan[1] > 20) {
       errors.life_span = `Life span can't be higher than 20`;
     } else if (+splitedLifeSpan[0] >= +splitedLifeSpan[1]) {
@@ -53,7 +56,6 @@ const validateHWT = (dogData, errors) => {
       (splitedHeight[0] && !/^[0-9]*$/g.test(splitedHeight[0])) ||
       (splitedHeight[1] && !/^[0-9]*$/g.test(splitedHeight[1]))
     ) {
-      console.log("si");
       errors.height = `Height must be a number`;
     } else if (+splitedHeight[0] < 10 || +splitedHeight[1] < 10) {
       errors.height = `Height can't be less than 10`;

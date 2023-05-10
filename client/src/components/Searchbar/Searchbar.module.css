@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inpSearch {
+  margin: 0 1em;
+  padding: 1em;
+  padding-left: 1em;
+  width: 10em;
+  background-color: var(--main-color2);
+  border: solid 2px var(--main-color);
+  border-radius: 10px;
+  outline: none;
+
+  font-family: "vox", sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--neutral-color);
+
+  transition: border 0.2s ease-in-out;
+}
+
+.inpSearch::-webkit-search-cancel-button {
+  display: none;
+}
+
+.inpSearch:focus {
+  border: solid 2px var(--neutral-color);
+}
+
+.inpSearch::placeholder {
+  color: var(--neutral-color);
+}
+
+.searchBtn {
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.searchBtn:hover {
+  transform: scale(1.2);
+}

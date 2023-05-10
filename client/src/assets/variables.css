@@ -2,10 +2,41 @@
 
 :root {
   /* *Colors* */
-  --main-color: brown;
+  --main-color: #9592f2;
+  --main-color2: #b6b9f2;
+  --secondary-color: #565659;
+  --secondary-color2: #8d95a6;
+  --neutral-color: #f2f2f2;
+  --complementary: #f2ac92;
+  --second-complementary: #f2dc92;
+  --danger: #f29492;
+
+  /* *BG* */
+  --blured-bg: #f2f2f2a1;
+  --blured-bg2: #9592f2b4;
+}
+
+/* :root {
+  --main-color: #ff0066;
   --secondary-color: black;
   --error-color: red;
 
-  /* *BG* */
   --blured-bg: #ffffff96;
+} */
+
+/* Color Theme Swatches in Hex */
+/* .Aranja-1-hex {
+  color: #565659;
 }
+.Aranja-2-hex {
+  color: #9794f2;
+}
+.Aranja-3-hex {
+  color: #b6b9f2;
+}
+.Aranja-4-hex {
+  color: #8d95a6;
+}
+.Aranja-5-hex {
+  color: #f2f2f2;
+} */

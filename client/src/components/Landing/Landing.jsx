@@ -70,7 +70,7 @@ const Landing = () => {
                 fill="currentColor"
               ></path>
             </svg>
-            Lets Go!
+            <p className={styles.animatedWord}>Lets Go!</p>
           </div>
         </NavLink>
       </div>
